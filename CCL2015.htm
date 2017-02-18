@@ -1,0 +1,537 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://202.72.14.52/p2/cci/SearchHistory.aspx -->
+<html class="gr__202_72_14_52"><head><meta http-equiv="Content-Type" content="text/html; charset=Big5">
+		<title>SearchHistory</title>
+		<meta content="True" name="vs_showGrid">
+		<meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
+		<meta content="C#" name="CODE_LANGUAGE">
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<link href="./CCL20152016_files/myfreetemplates.css" type="text/css" rel="stylesheet">
+		<style type="text/css">
+        INPUT.b { BORDER-BOTTOM: #a0a0c0 1px solid; BORDER-LEFT: #a0a0c0 1px solid; FONT-FAMILY: Georgia; MARGIN-BOTTOM: 5px; BACKGROUND: #eeeeff; HEIGHT: 24px; COLOR: #6060a0; FONT-SIZE: 12px; VERTICAL-ALIGN: middle; BORDER-TOP: #a0a0c0 1px solid; CURSOR: pointer; FONT-WEIGHT: bold; BORDER-RIGHT: #a0a0c0 1px solid }
+        .inputBox { BORDER-BOTTOM: #d8dfe5 1px solid; BORDER-LEFT: #d8dfe5 1px solid; BACKGROUND-COLOR: #ffffff; FONT-SIZE: 12px; BORDER-TOP: #d8dfe5 1px solid; BORDER-RIGHT: #d8dfe5 1px solid }
+        BODY { MARGIN: 0px; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; COLOR: #333333; FONT-SIZE: 12px }
+        .search_result_text { BORDER-BOTTOM: #999999 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #999999 1px solid; PADDING-BOTTOM: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BORDER-TOP: #999999 1px; BORDER-RIGHT: #999999 1px solid; PADDING-TOP: 4px }
+        .search_result_header { TEXT-ALIGN: center; BACKGROUND-COLOR: #999999; COLOR: #ffffff }
+        .search_result_header TD { COLOR: #ffffff }
+		</style>
+		<script type="text/javascript">
+		    var ChildWindow;
+		    function pop() {
+		        if (!ChildWindow || ChildWindow.closed) {
+
+		            ChildWindow = window.open('popup.htm', '成份屋苑資料', 'width=500,height=550,top=0,left=200,toolbars=0,scrollbars=1,status=0,resizable=0,titlebar=0');
+		            //ChildWindow = window.open('popup.htm', 'Select estate',);
+		        }
+		        else {
+		            ChildWindow.focus();
+		        }
+		    }
+
+		    function function1(t) {
+		        document.forms[0].chosen.value = t;
+		        document.forms[0].Radio3.checked = true;
+
+		    }
+		    function functionID(t) {
+		        document.forms[0].ccui.value = t;
+		    }
+
+		    function functionFocus() {
+		        window.focus();
+		    }
+
+
+
+		    /*==================================================
+		    $Id: tabber.js,v 1.9 2006/04/27 20:51:51 pat Exp $
+		    tabber.js by Patrick Fitzgerald pat@barelyfitz.com
+
+		    Documentation can be found at the following URL:
+		    http://www.barelyfitz.com/projects/tabber/
+
+		    License (http://www.opensource.org/licenses/mit-license.php)
+
+		    Copyright (c) 2006 Patrick Fitzgerald
+
+		    Permission is hereby granted, free of charge, to any person
+		    obtaining a copy of this software and associated documentation files
+		    (the "Software"), to deal in the Software without restriction,
+		    including without limitation the rights to use, copy, modify, merge,
+		    publish, distribute, sublicense, and/or sell copies of the Software,
+		    and to permit persons to whom the Software is furnished to do so,
+		    subject to the following conditions:
+
+		    The above copyright notice and this permission notice shall be
+		    included in all copies or substantial portions of the Software.
+
+		    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+		    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+		    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+		    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+		    BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+		    ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+		    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+		    SOFTWARE.
+		    ==================================================*/
+
+		    function tabberObj(argsObj) {
+		        var arg;
+		        this.div = null;
+		        this.classMain = "tabber";
+		        this.classMainLive = "tabberlive";
+		        this.classTab = "tabbertab";
+		        this.classTabDefault = "tabbertabdefault";
+		        this.classNav = "tabbernav";
+		        this.classTabHide = "tabbertabhide";
+		        this.classNavActive = "tabberactive";
+		        this.titleElements = ['h2', 'h3', 'h4', 'h5', 'h6'];
+		        this.titleElementsStripHTML = true;
+		        this.removeTitle = true;
+		        this.addLinkId = false;
+		        this.linkIdFormat = '<tabberid>nav<tabnumberone>';
+		        for (arg in argsObj) { this[arg] = argsObj[arg]; }
+		        this.REclassMain = new RegExp('\\b' + this.classMain + '\\b', 'gi');
+		        this.REclassMainLive = new RegExp('\\b' + this.classMainLive + '\\b', 'gi');
+		        this.REclassTab = new RegExp('\\b' + this.classTab + '\\b', 'gi');
+		        this.REclassTabDefault = new RegExp('\\b' + this.classTabDefault + '\\b', 'gi');
+		        this.REclassTabHide = new RegExp('\\b' + this.classTabHide + '\\b', 'gi');
+		        this.tabs = new Array();
+		        if (this.div) {
+		            this.init(this.div);
+		            this.div = null;
+		        }
+		    }
+
+		    tabberObj.prototype.init = function (e) {
+		        var 
+  childNodes,
+  i, i2,
+  t,
+  defaultTab = 0,
+  DOM_ul,
+  DOM_li,
+  DOM_a,
+  aId,
+  headingElement;
+		        if (!document.getElementsByTagName) { return false; }
+		        if (e.id) {
+		            this.id = e.id;
+		        }
+		        this.tabs.length = 0;
+		        childNodes = e.childNodes;
+		        for (i = 0; i < childNodes.length; i++) {
+		            if (childNodes[i].className &&
+       childNodes[i].className.match(this.REclassTab)) {
+		                t = new Object();
+		                t.div = childNodes[i];
+		                this.tabs[this.tabs.length] = t;
+		                if (childNodes[i].className.match(this.REclassTabDefault)) {
+		                    defaultTab = this.tabs.length - 1;
+		                }
+		            }
+		        }
+
+		        DOM_ul = document.createElement("ul");
+		        DOM_ul.className = this.classNav;
+
+		        for (i = 0; i < this.tabs.length; i++) {
+
+		            t = this.tabs[i];
+		            t.headingText = t.div.title;
+		            if (this.removeTitle) { t.div.title = ''; }
+
+		            if (!t.headingText) {
+		                for (i2 = 0; i2 < this.titleElements.length; i2++) {
+		                    headingElement = t.div.getElementsByTagName(this.titleElements[i2])[0];
+		                    if (headingElement) {
+		                        t.headingText = headingElement.innerHTML;
+		                        if (this.titleElementsStripHTML) {
+		                            t.headingText.replace(/<br>/gi, " ");
+		                            t.headingText = t.headingText.replace(/<[^>]+>/g, "");
+		                        }
+		                        break;
+		                    }
+		                }
+		            }
+
+		            if (!t.headingText) {
+		                t.headingText = i + 1;
+		            }
+		            DOM_li = document.createElement("li");
+		            t.li = DOM_li;
+		            DOM_a = document.createElement("a");
+		            DOM_a.appendChild(document.createTextNode(t.headingText));
+		            DOM_a.href = "javascript:void(null);";
+		            DOM_a.title = t.headingText;
+		            DOM_a.onclick = this.navClick;
+		            DOM_a.tabber = this;
+		            DOM_a.tabberIndex = i;
+
+		            if (this.addLinkId && this.linkIdFormat) {
+
+		                aId = this.linkIdFormat;
+		                aId = aId.replace(/<tabberid>/gi, this.id);
+		                aId = aId.replace(/<tabnumberzero>/gi, i);
+		                aId = aId.replace(/<tabnumberone>/gi, i + 1);
+		                aId = aId.replace(/<tabtitle>/gi, t.headingText.replace(/[^a-zA-Z0-9\-]/gi, ''));
+
+		                DOM_a.id = aId;
+		            }
+
+		            DOM_li.appendChild(DOM_a);
+
+		            DOM_ul.appendChild(DOM_li);
+		        }
+		        e.insertBefore(DOM_ul, e.firstChild);
+		        e.className = e.className.replace(this.REclassMain, this.classMainLive);
+		        this.tabShow(defaultTab);
+		        if (typeof this.onLoad == 'function') {
+		            this.onLoad({ tabber: this });
+		        }
+
+		        return this;
+		    };
+
+
+		    tabberObj.prototype.navClick = function (event) {
+		        var 
+  rVal,
+  a,
+  self,
+  tabberIndex,
+  onClickArgs;
+
+		        a = this;
+		        if (!a.tabber) { return false; }
+
+		        self = a.tabber;
+		        tabberIndex = a.tabberIndex;
+		        a.blur();
+		        if (typeof self.onClick == 'function') {
+
+		            onClickArgs = { 'tabber': self, 'index': tabberIndex, 'event': event };
+		            if (!event) { onClickArgs.event = window.event; }
+
+		            rVal = self.onClick(onClickArgs);
+		            if (rVal === false) { return false; }
+		        }
+
+		        self.tabShow(tabberIndex);
+
+		        return false;
+		    };
+
+
+		    tabberObj.prototype.tabHideAll = function () {
+		        var i;
+		        for (i = 0; i < this.tabs.length; i++) {
+		            this.tabHide(i);
+		        }
+		    };
+
+
+		    tabberObj.prototype.tabHide = function (tabberIndex) {
+		        var div;
+
+		        if (!this.tabs[tabberIndex]) { return false; }
+		        div = this.tabs[tabberIndex].div;
+		        if (!div.className.match(this.REclassTabHide)) {
+		            div.className += ' ' + this.classTabHide;
+		        }
+		        this.navClearActive(tabberIndex);
+
+		        return this;
+		    };
+
+
+		    tabberObj.prototype.tabShow = function (tabberIndex) {
+		        var div;
+
+		        if (!this.tabs[tabberIndex]) { return false; }
+		        this.tabHideAll();
+		        div = this.tabs[tabberIndex].div;
+		        div.className = div.className.replace(this.REclassTabHide, '');
+		        this.navSetActive(tabberIndex);
+		        if (typeof this.onTabDisplay == 'function') {
+		            this.onTabDisplay({ 'tabber': this, 'index': tabberIndex });
+		        }
+
+		        return this;
+		    };
+
+		    tabberObj.prototype.navSetActive = function (tabberIndex) {
+		        this.tabs[tabberIndex].li.className = this.classNavActive;
+
+		        return this;
+		    };
+
+
+		    tabberObj.prototype.navClearActive = function (tabberIndex) {
+		        this.tabs[tabberIndex].li.className = '';
+		        return this;
+		    };
+
+
+		    /*==================================================*/
+
+
+		    function tabberAutomatic(tabberArgs) {
+		        var 
+    tempObj,
+    divs,
+    i;
+
+		        if (!tabberArgs) { tabberArgs = {}; }
+		        tempObj = new tabberObj(tabberArgs);
+		        divs = document.getElementsByTagName("div");
+		        for (i = 0; i < divs.length; i++) {
+		            if (divs[i].className &&
+	divs[i].className.match(tempObj.REclassMain)) {
+
+		                tabberArgs.div = divs[i];
+		                divs[i].tabber = new tabberObj(tabberArgs);
+		            }
+		        }
+
+		        return this;
+		    }
+
+
+		    /*==================================================*/
+
+
+		    function tabberAutomaticOnLoad(tabberArgs) {
+		        var oldOnLoad;
+
+		        if (!tabberArgs) { tabberArgs = {}; }
+		        oldOnLoad = window.onload;
+		        if (typeof window.onload != 'function') {
+		            window.onload = function () {
+		                tabberAutomatic(tabberArgs);
+		            };
+		        } else {
+		            window.onload = function () {
+		                oldOnLoad();
+		                tabberAutomatic(tabberArgs);
+		            };
+		        }
+		    }
+
+
+		    /*==================================================*/
+
+		    if (typeof tabberOptions == 'undefined') {
+
+		        tabberAutomaticOnLoad();
+
+		    } else {
+
+		        if (!tabberOptions['manualStartup']) {
+		            tabberAutomaticOnLoad(tabberOptions);
+		        }
+
+		    }
+
+		    function historyTab1(atab) {
+		        document.location.href = "?tab=" + atab;
+		    }
+
+		    function chnageRadioFocus1() {
+		        document.getElementById("Radio5").checked = true;
+		    }
+
+		    function chnageRadioFocus2() {
+		        document.getElementById("Radio7").checked = true;
+		    }
+		</script>
+	</head>
+	<body ms_positioning="GridLayout" data-gr-c-s-loaded="true">
+		<form name="myForm" method="post" action="http://202.72.14.52/p2/cci/SearchHistory.aspx" id="myForm" style="WIDTH: 748px">
+<input type="hidden" name="__VIEWSTATE" value="dDwtMTY2NTI4MzIzNTt0PDtsPGk8MT47PjtsPHQ8O2w8aTwxPjtpPDM+O2k8NDg+O2k8NTI+O2k8NTQ+O2k8NTY+O2k8NTg+O2k8NjY+O2k8NzI+O2k8Nzg+O2k8ODA+O2k8ODc+Oz47bDx0PHA8bDxUZXh0Oz47bDxcPHVsIGNsYXNzPSJ0YWJiZXJuYXYiXD5cPGxpIGNsYXNzPSJ0YWJiZXJhY3RpdmUiXD5cPGEgaHJlZj0iamF2YXNjcmlwdDpoaXN0b3J5VGFiMSgxKSJcPuafpeipouaMh+aVuCAoU2VhcmNoIG9uIEluZGljZXMpXDwvYVw+XDxsaVw+XDxhIGhyZWY9ImphdmFzY3JpcHQ6aGlzdG9yeVRhYjEoMikiXD7mn6XoqaLmiJDku73lsYvoi5FcPC9hXD5cPC9saVw+XDwvdWxcPlw8VEFCTEUgaWQ9IlRhYmxlMSIgc3R5bGU9IlotSU5ERVg6IDEwMFw7IExFRlQ6IDhweFw7IFdJRFRIOiA1ODdweFw7IFBPU0lUSU9OOiBhYnNvbHV0ZVw7IFRPUDogNDhweFw7IEhFSUdIVDogMjMwcHgiIGNlbGxTcGFjaW5nPSIxIiBjZWxsUGFkZGluZz0iMSIgd2lkdGg9IjU4NyIgYm9yZGVyPSIwIlw+Oz4+Ozs+O3Q8cDxsPFRleHQ7PjtsPFw8Rm9udCBzaXplPSIyIlw+6YG45Y+W5oiQ5Lu95oyH5pW4IFw+IOmhr+ekuumBjuW+gOaVuOaTmuizh+aWmVw8L2ZvbnRcPlw8Rk9OVCBmYWNlPSLmlrDntLDmmI7pq5QiXD4gKCDmiYDmnInos4fmlpnlnYfnlLExOTk0IOW5tOmWi+Wni+aPkOS+myApXDwvRk9OVFw+XDxici9cPkNob29zZSBJbmRleCAmIER1cmF0aW9uID1cPiBBbGwgaGlzdG9yaWNhbCBkYXRhIHN0YXJ0ZWQgZnJvbSAxOTk0Oz4+Ozs+O3Q8cDxsPFRleHQ7PjtsPFw8Zm9udCBzaXplPSIyIlw+XDxiXD7kuK3ljp/ln47luILpoJjlhYjmjIfmlbggQ0NMXDwvYlw+XDwvZm9udFw+Oz4+Ozs+O3Q8cDxsPFRleHQ7PjtsPFw8SFIgY29sb3I9IiNmZjAwMDAiXD47Pj47Oz47dDxwPGw8VGV4dDs+O2w8XDx0YWJsZSBib3JkZXI9IjAiIGNlbGxwYWRkaW5nPSIwIiBjZWxsc3BhY2luZz0iMCIgc3R5bGU9ImJvcmRlci1jb2xsYXBzZTogY29sbGFwc2UiIGJvcmRlcmNvbG9yPSIjMTExMTExIiB3aWR0aD0iMTAwJSIgaWQ9IkF1dG9OdW1iZXIxIlw+XDx0clw+XDx0ZCB3aWR0aD0iMjUlIlw+5pel5pyfIERhdGVcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+5Lit5Y6f5Z+O5biC6aCY5YWI5oyH5pW4IENDTFw8YnJcPijmiYDmnInmiJDku73lsYvoi5EpXDwvdGRcPlw8L3RyXD5cPHRyIGJnY29sb3I9IiNmZmQ5ZDkiXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzEyLzIxIC0gMjAxNS8xMi8yN1w8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xMzUuODlcPC90ZFw+XDwvdHJcPlw8dHJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMTIvMTQgLSAyMDE1LzEyLzIwXDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjEzNi44Nlw8L3RkXD5cPC90clw+XDx0ciBiZ2NvbG9yPSIjZmZkOWQ5Ilw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8xMi8wNyAtIDIwMTUvMTIvMTNcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTM3LjMwXDwvdGRcPlw8L3RyXD5cPHRyXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzExLzMwIC0gMjAxNS8xMi8wNlw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xMzguMjJcPC90ZFw+XDwvdHJcPlw8dHIgYmdjb2xvcj0iI2ZmZDlkOSJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMTEvMjMgLSAyMDE1LzExLzI5XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjEzOS44Mlw8L3RkXD5cPC90clw+XDx0clw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8xMS8xNiAtIDIwMTUvMTEvMjJcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQwLjI3XDwvdGRcPlw8L3RyXD5cPHRyIGJnY29sb3I9IiNmZmQ5ZDkiXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzExLzA5IC0gMjAxNS8xMS8xNVw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDEuMTNcPC90ZFw+XDwvdHJcPlw8dHJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMTEvMDIgLSAyMDE1LzExLzA4XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0Mi4xNFw8L3RkXD5cPC90clw+XDx0ciBiZ2NvbG9yPSIjZmZkOWQ5Ilw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8xMC8yNiAtIDIwMTUvMTEvMDFcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQxLjc2XDwvdGRcPlw8L3RyXD5cPHRyXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzEwLzE5IC0gMjAxNS8xMC8yNVw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDIuOThcPC90ZFw+XDwvdHJcPlw8dHIgYmdjb2xvcj0iI2ZmZDlkOSJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMTAvMTIgLSAyMDE1LzEwLzE4XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0NC4zM1w8L3RkXD5cPC90clw+XDx0clw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8xMC8wNSAtIDIwMTUvMTAvMTFcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQ0LjYxXDwvdGRcPlw8L3RyXD5cPHRyIGJnY29sb3I9IiNmZmQ5ZDkiXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzA5LzI4IC0gMjAxNS8xMC8wNFw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDYuNDVcPC90ZFw+XDwvdHJcPlw8dHJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDkvMjEgLSAyMDE1LzA5LzI3XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0Ni4wMVw8L3RkXD5cPC90clw+XDx0ciBiZ2NvbG9yPSIjZmZkOWQ5Ilw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wOS8xNCAtIDIwMTUvMDkvMjBcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQ2LjY3XDwvdGRcPlw8L3RyXD5cPHRyXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzA5LzA3IC0gMjAxNS8wOS8xM1w8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDYuOTJcPC90ZFw+XDwvdHJcPlw8dHIgYmdjb2xvcj0iI2ZmZDlkOSJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDgvMzEgLSAyMDE1LzA5LzA2XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0Ni43Nlw8L3RkXD5cPC90clw+XDx0clw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wOC8yNCAtIDIwMTUvMDgvMzBcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQ2Ljc4XDwvdGRcPlw8L3RyXD5cPHRyIGJnY29sb3I9IiNmZmQ5ZDkiXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzA4LzE3IC0gMjAxNS8wOC8yM1w8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDUuNDVcPC90ZFw+XDwvdHJcPlw8dHJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDgvMTAgLSAyMDE1LzA4LzE2XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0NC44NFw8L3RkXD5cPC90clw+XDx0ciBiZ2NvbG9yPSIjZmZkOWQ5Ilw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wOC8wMyAtIDIwMTUvMDgvMDlcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQ0LjI5XDwvdGRcPlw8L3RyXD5cPHRyXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzA3LzI3IC0gMjAxNS8wOC8wMlw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDYuMDdcPC90ZFw+XDwvdHJcPlw8dHIgYmdjb2xvcj0iI2ZmZDlkOSJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDcvMjAgLSAyMDE1LzA3LzI2XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0NS40OFw8L3RkXD5cPC90clw+XDx0clw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wNy8xMyAtIDIwMTUvMDcvMTlcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQzLjMyXDwvdGRcPlw8L3RyXD5cPHRyIGJnY29sb3I9IiNmZmQ5ZDkiXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzA3LzA2IC0gMjAxNS8wNy8xMlw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDIuNjJcPC90ZFw+XDwvdHJcPlw8dHJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDYvMjkgLSAyMDE1LzA3LzA1XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0My4xNVw8L3RkXD5cPC90clw+XDx0ciBiZ2NvbG9yPSIjZmZkOWQ5Ilw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wNi8yMiAtIDIwMTUvMDYvMjhcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQzLjU2XDwvdGRcPlw8L3RyXD5cPHRyXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzA2LzE1IC0gMjAxNS8wNi8yMVw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDEuODdcPC90ZFw+XDwvdHJcPlw8dHIgYmdjb2xvcj0iI2ZmZDlkOSJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDYvMDggLSAyMDE1LzA2LzE0XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0Mi4yNlw8L3RkXD5cPC90clw+XDx0clw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wNi8wMSAtIDIwMTUvMDYvMDdcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQzLjMxXDwvdGRcPlw8L3RyXD5cPHRyIGJnY29sb3I9IiNmZmQ5ZDkiXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzA1LzI1IC0gMjAxNS8wNS8zMVw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDEuOTZcPC90ZFw+XDwvdHJcPlw8dHJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDUvMTggLSAyMDE1LzA1LzI0XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0MC4zM1w8L3RkXD5cPC90clw+XDx0ciBiZ2NvbG9yPSIjZmZkOWQ5Ilw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wNS8xMSAtIDIwMTUvMDUvMTdcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQxLjMwXDwvdGRcPlw8L3RyXD5cPHRyXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzA1LzA0IC0gMjAxNS8wNS8xMFw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDEuMzdcPC90ZFw+XDwvdHJcPlw8dHIgYmdjb2xvcj0iI2ZmZDlkOSJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDQvMjcgLSAyMDE1LzA1LzAzXDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0MS40Nlw8L3RkXD5cPC90clw+XDx0clw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wNC8yMCAtIDIwMTUvMDQvMjZcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQxLjIyXDwvdGRcPlw8L3RyXD5cPHRyIGJnY29sb3I9IiNmZmQ5ZDkiXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzA0LzEzIC0gMjAxNS8wNC8xOVw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xNDAuMDRcPC90ZFw+XDwvdHJcPlw8dHJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDQvMDYgLSAyMDE1LzA0LzEyXDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0MS42MFw8L3RkXD5cPC90clw+XDx0ciBiZ2NvbG9yPSIjZmZkOWQ5Ilw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wMy8zMCAtIDIwMTUvMDQvMDVcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTQyLjM2XDwvdGRcPlw8L3RyXD5cPHRyXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzAzLzIzIC0gMjAxNS8wMy8yOVw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xMzkuNzBcPC90ZFw+XDwvdHJcPlw8dHIgYmdjb2xvcj0iI2ZmZDlkOSJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDMvMTYgLSAyMDE1LzAzLzIyXDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjE0MC4wNVw8L3RkXD5cPC90clw+XDx0clw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wMy8wOSAtIDIwMTUvMDMvMTVcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTM5LjAzXDwvdGRcPlw8L3RyXD5cPHRyIGJnY29sb3I9IiNmZmQ5ZDkiXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzAzLzAyIC0gMjAxNS8wMy8wOFw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xMzguODBcPC90ZFw+XDwvdHJcPlw8dHJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDIvMjMgLSAyMDE1LzAzLzAxXDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjEzNy4xMlw8L3RkXD5cPC90clw+XDx0ciBiZ2NvbG9yPSIjZmZkOWQ5Ilw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wMi8xNiAtIDIwMTUvMDIvMjJcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTM2LjIwXDwvdGRcPlw8L3RyXD5cPHRyXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzAyLzA5IC0gMjAxNS8wMi8xNVw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xMzcuMjBcPC90ZFw+XDwvdHJcPlw8dHIgYmdjb2xvcj0iI2ZmZDlkOSJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDIvMDIgLSAyMDE1LzAyLzA4XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjEzNi42NFw8L3RkXD5cPC90clw+XDx0clw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wMS8yNiAtIDIwMTUvMDIvMDFcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTM2LjM1XDwvdGRcPlw8L3RyXD5cPHRyIGJnY29sb3I9IiNmZmQ5ZDkiXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE1LzAxLzE5IC0gMjAxNS8wMS8yNVw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xMzQuMDNcPC90ZFw+XDwvdHJcPlw8dHJcPlw8dGQgd2lkdGg9IjI1JSJcPjIwMTUvMDEvMTIgLSAyMDE1LzAxLzE4XDwvdGRcPlw8dGQgd2lkdGg9IjI1JSJcPjEzNC42NFw8L3RkXD5cPC90clw+XDx0ciBiZ2NvbG9yPSIjZmZkOWQ5Ilw+XDx0ZCB3aWR0aD0iMjUlIlw+MjAxNS8wMS8wNSAtIDIwMTUvMDEvMTFcPC90ZFw+XDx0ZCB3aWR0aD0iMjUlIlw+MTMzLjY0XDwvdGRcPlw8L3RyXD5cPHRyXD5cPHRkIHdpZHRoPSIyNSUiXD4yMDE0LzEyLzI5IC0gMjAxNS8wMS8wNFw8L3RkXD5cPHRkIHdpZHRoPSIyNSUiXD4xMzMuMzRcPC90ZFw+XDwvdHJcPlw8L3RhYmxlXD47Pj47Oz47dDxwPGw8VGV4dDs+O2w8XDxUQUJMRSBpZD0iVGFibGU0IiBzdHlsZT0iWi1JTkRFWDogOTlcOyBMRUZUOiA4cHhcOyBXSURUSDogNTg3cHhcOyBQT1NJVElPTjogYWJzb2x1dGVcOyBUT1A6IDQ4cHhcOyBIRUlHSFQ6IDIzMHB4IiBjZWxsU3BhY2luZz0iMSIgY2VsbFBhZGRpbmc9IjEiIHdpZHRoPSI1ODciIGJvcmRlcj0iMCJcPjs+Pjs7Pjt0PHA8bDxUZXh0Oz47bDxcZTs+Pjs7Pjt0PHQ8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+OztsPGk8MD47Pj47Oz47dDx0PHA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Pjs7bDxpPDExPjs+Pjs7Pjt0PHA8cDxsPE1pbmltdW1WYWx1ZTtNYXhpbXVtVmFsdWU7PjtsPDIwMTQ7MjAxNzs+Pjs+Ozs+O3Q8cDxwPGw8TWluaW11bVZhbHVlO01heGltdW1WYWx1ZTs+O2w8MjAxNDsyMDE3Oz4+Oz47Oz47dDxwPGw8VGV4dDs+O2w8XGU7Pj47Oz47Pj47Pj47bDxSYWRpbzI7UmFkaW84O1JhZGlvOTtSYWRpbzQ7UmFkaW81O1JhZGlvMTtSYWRpbzEwO1JhZGlvMTE7UmFkaW82O1JhZGlvNztSYWRpbzM7Pj6WSySzh3SeUfYmup1RTv4VR89FDg==">
+
+			<ul class="tabbernav"><li class="tabberactive"><a href="javascript:historyTab1(1)">查詢指數 (Search on Indices)</a></li><li><a href="javascript:historyTab1(2)">查詢成份屋苑</a></li></ul><table id="Table1" style="Z-INDEX: 100; LEFT: 8px; WIDTH: 587px; POSITION: absolute; TOP: 48px; HEIGHT: 230px" cellspacing="1" cellpadding="1" width="587" border="0">
+			<tbody>
+				<tr>
+					<td style="WIDTH: 800px; HEIGHT: 31px" valign="top" background="./CCL20152016_files/toparrows.gif" colspan="5">
+						<p>
+							<table id="Table2" style="WIDTH: 800px; HEIGHT: 91px" cellspacing="1" cellpadding="1" width="748" bgcolor="gainsboro" border="0">
+								<tbody>
+									<tr>
+										<td colspan="8">
+											<font size="2">選取成份指數 &gt; 顯示過往數據資料</font><font face="新細明體"> ( 所有資料均由1994 年開始提供 )</font><br>Choose Index &amp; Duration =&gt; All historical data started from 1994<br>
+											<table>
+												<tbody><tr>
+													<td>
+														<input value="v2" name="R1" id="Radio2" type="radio" checked="checked"><font face="新細明體">&nbsp;中原城市領先指數 
+															CCL</font>
+													</td>
+													<td>
+														<input value="v8" name="R1" id="Radio8" type="radio"><font face="新細明體">&nbsp;中原城市(大型單位)領先指數<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCL (Large units)</font>
+													</td>
+													<td>
+														<input value="v9" name="R1" id="Radio9" type="radio"><font face="新細明體">&nbsp;中原城市(中小型單位)領先指數<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCL (Small/Medium units)</font>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<input value="v4" name="R1" id="Radio4" type="radio"><font face="新細明體">&nbsp;中原城市大型屋苑領先指數 
+															(CCL Mass)</font>
+													</td>
+													<td colspan="2">
+														<input value="v5" name="R1" id="Radio5" type="radio"><font face="新細明體">&nbsp;中原城市分區領先指數
+															<select name="DropDownList3" id="DropDownList3" onfocus="chnageRadioFocus1();">
+	<option selected="selected" value="港島">港島 Hong Kong Island</option>
+	<option value="九龍">九龍 Kowloon</option>
+	<option value="新界(東)">新界(東) New Territories (East)</option>
+	<option value="新界(西)">新界(西) New Territories (West)</option>
+
+</select><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCL (Sub-index- by District)
+														</font>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<input value="v1" name="R1" id="Radio1" type="radio"><font face="新細明體">&nbsp;中原城市指數 
+														CCI</font>
+													</td>
+													<td>
+														<input value="v10" name="R1" id="Radio10" type="radio"><font face="新細明體">&nbsp;中原城市(大型單位)指數<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCI (Large units)</font>
+													</td>
+													<td>
+														<input value="v11" name="R1" id="Radio11" type="radio"><font face="新細明體">&nbsp;中原城市(中小型單位)指數<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCI (Small/Medium units)</font>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<input value="v6" name="R1" id="Radio6" type="radio"><font face="新細明體">&nbsp;中原城市大型屋苑指數 
+															(CCI Mass)</font>
+													</td>
+													<td colspan="2">
+														<input value="v7" name="R1" id="Radio7" type="radio"><font face="新細明體">&nbsp;中原城市分區指數
+															<select name="DropDownList4" id="DropDownList4" onfocus="chnageRadioFocus2();">
+	<option selected="selected" value="港島">港島 Hong Kong Island</option>
+	<option value="九龍">九龍 Kowloon</option>
+	<option value="新界(東)">新界(東) New Territories (East)</option>
+	<option value="新界(西)">新界(西) New Territories (West)</option>
+
+</select><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCI (Sub-index- by District)
+														</font>
+													</td>
+												</tr>
+											</tbody></table>
+											<br>
+											日期(Date)：
+											<input name="TextBox1" type="text" value="2015" id="TextBox1"><font size="2">年(Year)</font>
+											<select name="DropDownList1" id="DropDownList1">
+	<option selected="selected" value="01">Jan</option>
+	<option value="02">Feb</option>
+	<option value="03">Mar</option>
+	<option value="04">Apr</option>
+	<option value="05">May</option>
+	<option value="06">Jun</option>
+	<option value="07">Jul</option>
+	<option value="08">Aug</option>
+	<option value="09">Sep</option>
+	<option value="10">Oct</option>
+	<option value="11">Nov</option>
+	<option value="12">Dec</option>
+
+</select>
+											<font size="2">月(Month)</font>
+											<input name="TextBox2" type="text" value="1" id="TextBox2"><font size="2">日(Day)
+												至</font><input name="TextBox3" type="text" value="2016" id="TextBox3"><font size="2">年(Year)</font>
+											<select name="DropDownList2" id="DropDownList2">
+	<option selected="selected" value="01">Jan</option>
+	<option value="02">Feb</option>
+	<option value="03">Mar</option>
+	<option value="04">Apr</option>
+	<option value="05">May</option>
+	<option value="06">Jun</option>
+	<option value="07">Jul</option>
+	<option value="08">Aug</option>
+	<option value="09">Sep</option>
+	<option value="10">Oct</option>
+	<option value="11">Nov</option>
+	<option value="12">Dec</option>
+
+</select>
+											<font size="2">月(Month)</font>
+											<input name="TextBox4" type="text" value="1" id="TextBox4"><font size="2">日(Day)<br>
+												<input type="submit" name="Button1" value="查詢過往資料(SEARCH)" onclick="if (typeof(Page_ClientValidate) == &#39;function&#39;) Page_ClientValidate(); " language="javascript" id="Button1" class="b"><br>
+												&nbsp;&nbsp;&nbsp;&nbsp;</font>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</p><p>
+							<font size="2"><b>中原城市領先指數 CCL</b></font><input name="Text1" id="Text1" type="text" style="HEIGHT: 22px; VISIBILITY: hidden" readonly="" size="1"><strong><font size="2"><br>
+								</font></strong>
+							</p><hr color="#ff0000">
+						<p>
+							<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1"><tbody><tr><td width="25%">日期 Date</td><td width="25%">中原城市領先指數 CCL<br>(所有成份屋苑)</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/12/21 - 2015/12/27</td><td width="25%">135.89</td></tr><tr><td width="25%">2015/12/14 - 2015/12/20</td><td width="25%">136.86</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/12/07 - 2015/12/13</td><td width="25%">137.30</td></tr><tr><td width="25%">2015/11/30 - 2015/12/06</td><td width="25%">138.22</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/11/23 - 2015/11/29</td><td width="25%">139.82</td></tr><tr><td width="25%">2015/11/16 - 2015/11/22</td><td width="25%">140.27</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/11/09 - 2015/11/15</td><td width="25%">141.13</td></tr><tr><td width="25%">2015/11/02 - 2015/11/08</td><td width="25%">142.14</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/10/26 - 2015/11/01</td><td width="25%">141.76</td></tr><tr><td width="25%">2015/10/19 - 2015/10/25</td><td width="25%">142.98</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/10/12 - 2015/10/18</td><td width="25%">144.33</td></tr><tr><td width="25%">2015/10/05 - 2015/10/11</td><td width="25%">144.61</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/09/28 - 2015/10/04</td><td width="25%">146.45</td></tr><tr><td width="25%">2015/09/21 - 2015/09/27</td><td width="25%">146.01</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/09/14 - 2015/09/20</td><td width="25%">146.67</td></tr><tr><td width="25%">2015/09/07 - 2015/09/13</td><td width="25%">146.92</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/08/31 - 2015/09/06</td><td width="25%">146.76</td></tr><tr><td width="25%">2015/08/24 - 2015/08/30</td><td width="25%">146.78</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/08/17 - 2015/08/23</td><td width="25%">145.45</td></tr><tr><td width="25%">2015/08/10 - 2015/08/16</td><td width="25%">144.84</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/08/03 - 2015/08/09</td><td width="25%">144.29</td></tr><tr><td width="25%">2015/07/27 - 2015/08/02</td><td width="25%">146.07</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/07/20 - 2015/07/26</td><td width="25%">145.48</td></tr><tr><td width="25%">2015/07/13 - 2015/07/19</td><td width="25%">143.32</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/07/06 - 2015/07/12</td><td width="25%">142.62</td></tr><tr><td width="25%">2015/06/29 - 2015/07/05</td><td width="25%">143.15</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/06/22 - 2015/06/28</td><td width="25%">143.56</td></tr><tr><td width="25%">2015/06/15 - 2015/06/21</td><td width="25%">141.87</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/06/08 - 2015/06/14</td><td width="25%">142.26</td></tr><tr><td width="25%">2015/06/01 - 2015/06/07</td><td width="25%">143.31</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/05/25 - 2015/05/31</td><td width="25%">141.96</td></tr><tr><td width="25%">2015/05/18 - 2015/05/24</td><td width="25%">140.33</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/05/11 - 2015/05/17</td><td width="25%">141.30</td></tr><tr><td width="25%">2015/05/04 - 2015/05/10</td><td width="25%">141.37</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/04/27 - 2015/05/03</td><td width="25%">141.46</td></tr><tr><td width="25%">2015/04/20 - 2015/04/26</td><td width="25%">141.22</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/04/13 - 2015/04/19</td><td width="25%">140.04</td></tr><tr><td width="25%">2015/04/06 - 2015/04/12</td><td width="25%">141.60</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/03/30 - 2015/04/05</td><td width="25%">142.36</td></tr><tr><td width="25%">2015/03/23 - 2015/03/29</td><td width="25%">139.70</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/03/16 - 2015/03/22</td><td width="25%">140.05</td></tr><tr><td width="25%">2015/03/09 - 2015/03/15</td><td width="25%">139.03</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/03/02 - 2015/03/08</td><td width="25%">138.80</td></tr><tr><td width="25%">2015/02/23 - 2015/03/01</td><td width="25%">137.12</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/02/16 - 2015/02/22</td><td width="25%">136.20</td></tr><tr><td width="25%">2015/02/09 - 2015/02/15</td><td width="25%">137.20</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/02/02 - 2015/02/08</td><td width="25%">136.64</td></tr><tr><td width="25%">2015/01/26 - 2015/02/01</td><td width="25%">136.35</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/01/19 - 2015/01/25</td><td width="25%">134.03</td></tr><tr><td width="25%">2015/01/12 - 2015/01/18</td><td width="25%">134.64</td></tr><tr bgcolor="#ffd9d9"><td width="25%">2015/01/05 - 2015/01/11</td><td width="25%">133.64</td></tr><tr><td width="25%">2014/12/29 - 2015/01/04</td><td width="25%">133.34</td></tr></tbody></table>
+							<font face="新細明體">
+								<br>
+							</font>
+							<br>
+						</p>
+					</td>
+				</tr>
+			</tbody>
+			</table>
+			<table id="Table4" style="Z-INDEX: 99; LEFT: 8px; WIDTH: 587px; POSITION: absolute; TOP: 48px; HEIGHT: 230px" cellspacing="1" cellpadding="1" width="587" border="0">
+			<tbody>
+				<tr>
+					<td style="WIDTH: 748px; HEIGHT: 31px" valign="top" background="./CCL20152016_files/toparrows.gif" colspan="5">
+						<p>
+							<table id="Table3" style="WIDTH: 748px; HEIGHT: 280px" cellspacing="1" cellpadding="1" width="748" bgcolor="gainsboro" border="0">
+								<tbody>
+									<tr>
+										<td colspan="8">
+											<br>
+											<br>
+											<input value="v3" name="R2" id="Radio3" type="radio" checked="checked">屋苑：<input name="chosen" id="chosen" type="text" class="inputbox" style="WIDTH: 578px; HEIGHT: 22px; FONT-WEIGHT: bold" onclick="pop();" readonly="" size="91" value="抱歉閣下暫時未有選取屋苑。">&nbsp;<input class="b" style="WIDTH: 94px; HEIGHT: 24px" onclick="pop();" type="button" value="按此選擇屋苑"><br>
+											日期：
+											<input name="Textbox5" type="text" value="2016" id="Textbox5"><font size="2">年</font>
+											
+											<font size="2">月</font>
+											<input name="Textbox6" type="text" value="1" id="Textbox6"><font size="2">日 
+												至</font><input name="Textbox7" type="text" value="2017" id="Textbox7"><font size="2">年</font>
+											
+											<font size="2">月</font>
+											<input name="Textbox8" type="text" value="17" id="Textbox8"><font size="2">日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="submit" name="Button2" value="查詢過往資料" onclick="if (typeof(Page_ClientValidate) == &#39;function&#39;) Page_ClientValidate(); " language="javascript" id="Button2" class="b"><br>
+												&nbsp;&nbsp;&nbsp;&nbsp;</font>
+											<p>
+											</p>
+											
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</p><p>
+							<input name="ccui" id="ccui" type="text" style="HEIGHT: 22px; VISIBILITY: hidden" readonly="" size="1"><strong><font size="2"><br>
+								</font></strong>
+							
+							<br>
+							<br>
+							
+						</p><p>
+							<font face="新細明體">
+								<br>
+							</font>
+							<br>
+						</p>
+					</td>
+				</tr>
+			</tbody>
+			</table>
+			<p>
+				<font face="新細明體"></font>
+			</p>
+			
+		</form>
+	
+
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>
