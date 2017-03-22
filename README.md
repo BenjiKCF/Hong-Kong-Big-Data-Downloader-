@@ -3,4 +3,4 @@ A data downloader for Hong Kong data. This includes HK Housing price (Centa-City
 This version will use Quandl and Pandas datareader from yahoo and google to download all the economic data.
 Centa-City leading index will be downloaded on  http://202.72.14.52/p2/cci/SearchHistory.aspx and parsed the htm file with beautiful soup
 I will also upload my downloaded data to here for the ease of use.
-I applied a machine learning algorithm in the end for demonstration.
+I have also applied a machine learning algorithm in the end to demonstrate how to use the data.
